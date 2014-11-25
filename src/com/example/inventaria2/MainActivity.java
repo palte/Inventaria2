@@ -20,11 +20,18 @@ import android.widget.TableRow.LayoutParams;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnKeyListener, OnTouchListener {
-
+	
+	/**
+	 * The code to tell the handler to stop showing the splash 
+	 */
 	private static final int STOPSPLASH = 0;
 	// time in milliseconds
 	private static final long SPLASHTIME = 3000;
 
+	/**
+	 * The key that indicates if the app has been initiated
+	 * before and has not been killed
+	 */
 	private static final String INICIADO = "INICIADO";
 	private TableLayout inventariotable;
 	private int idTouchedElement;
@@ -45,7 +52,8 @@ public class MainActivity extends Activity implements OnKeyListener, OnTouchList
 			super.handleMessage(msg);
 		}
 	};
-
+	
+	// Is this necessary, or can we just use a preferences xml?
 	private TabHost tabHost;
 
 	@Override
@@ -72,7 +80,12 @@ public class MainActivity extends Activity implements OnKeyListener, OnTouchList
 
 		super.onSaveInstanceState(outState);
 	}
-
+	
+	/**
+	 * The code that is called both after the splash is killed, and
+	 * during {@code #onCreate()}. This loads the activity's xml file
+	 * and initializes some essencial global variables
+	 */
 	protected void loadMainActivityXml() {
 		// remove SplashScreen from view
 		// splash.setVisibility(View.GONE);
