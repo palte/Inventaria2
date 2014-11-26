@@ -197,6 +197,12 @@ public class MainActivity extends Activity implements OnKeyListener, OnTouchList
 			tabHost.setCurrentTabByTag("tabConfiguration");
 			return true;
 		}
+		//sali de la aplicacion
+		if (id == R.id.Salir) {
+			finish();
+			return true;
+		}
+		
 		return super.onOptionsItemSelected(item);
 	}
 
