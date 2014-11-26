@@ -104,7 +104,7 @@ public class MainActivity extends Activity implements OnKeyListener, OnTouchList
 		tabHost.addTab(tab);
 		// asigno nuestro objeto tablelayout a una variable
 		inventariotable = (TableLayout) findViewById(R.id.tableLayout1);
-		this.buildTable(30, 5);
+		this.buildLine();
 
 	}
 
@@ -149,6 +149,35 @@ public class MainActivity extends Activity implements OnKeyListener, OnTouchList
 			inventariotable.addView(row);
 
 		}
+	}
+	
+	private void buildLine() {
+
+		// outer for loop
+	
+
+			TableRow row = new TableRow(this);
+			row.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
+					LayoutParams.WRAP_CONTENT));
+
+			// inner for loop
+			for (int j = 1; j <= 5; j++) {
+
+				EditText et = new EditText(this);
+				et.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+						LayoutParams.WRAP_CONTENT));
+				et.setBackgroundResource(R.drawable.cell_shape);
+				et.setPadding(5, 5, 5, 5);
+				//et.setText("R " + i + ", C" + j);
+				et.setOnKeyListener(this);
+
+				row.addView(et);
+
+			}
+
+			inventariotable.addView(row);
+
+		
 	}
 
 	@Override
