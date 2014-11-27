@@ -34,7 +34,8 @@ public class MainActivity extends Activity implements OnKeyListener, OnTouchList
 	 */
 	private static final String INICIADO = "INICIADO";
 	private TableLayout inventariotable;
-	private int idTouchedElement;
+	private int idTouchedElement,idcelda =1;
+	
 	// handler for splash screen
 	private Handler splashHandler = new Handler() {
 		/*
@@ -114,8 +115,10 @@ public class MainActivity extends Activity implements OnKeyListener, OnTouchList
 				&& (keyCode == KeyEvent.KEYCODE_ENTER)) {
 			Toast.makeText(this, "" + idTouchedElement,
 					Toast.LENGTH_LONG).show();
+			
 			inventariotable.setNextFocusRightId(inventariotable
 					.getNextFocusRightId());
+			
 			return true;
 
 		}
@@ -169,12 +172,14 @@ public class MainActivity extends Activity implements OnKeyListener, OnTouchList
 				et.setBackgroundResource(R.drawable.cell_shape);
 				et.setPadding(5, 5, 5, 5);
 				//et.setText("R " + i + ", C" + j);
+				et.setId(idcelda);
 				et.setOnKeyListener(this);
+				et.setOnTouchListener(this);
 
 				row.addView(et);
-
+                idcelda++;
 			}
-
+//
 			inventariotable.addView(row);
 
 		
@@ -210,6 +215,7 @@ public class MainActivity extends Activity implements OnKeyListener, OnTouchList
 	public boolean onTouch(View v, MotionEvent event) {
 		// TODO Auto-generated method stub
 		idTouchedElement = v.getId();
+		
 		return false;
 	}
 }
